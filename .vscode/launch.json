@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "YEDI",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.js"
+        }
+    ]
+}
