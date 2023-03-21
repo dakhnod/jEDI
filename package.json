@@ -1,5 +1,9 @@
 {
+  "type": "module",
   "dependencies": {
-    "jsonata": "^2.0.2"
+    "@mhoc/axios-digest-auth": "^0.8.0",
+    "axios": "^1.3.4",
+    "jsonata": "^2.0.2",
+    "sqlite3": "^5.1.6"
   }
 }

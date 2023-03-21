@@ -5,7 +5,10 @@
             "name": "YEDI",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}/app.js"
+            "program": "${workspaceFolder}/app.js",
+            "args": [
+                "--files", "test.jsonata"
+            ]
         }
     ]
 }
