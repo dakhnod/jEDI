@@ -24,8 +24,10 @@ import { parseArgs } from 'node:util'
     }
     const files = args.values.files
 
+    let database = undefined
+
     if(args.values.database != undefined){
-        let database = new sqlite3.Database(args.values.database)
+        database = new sqlite3.Database(args.values.database)
     }
 
     let http_args_default = {
@@ -128,6 +130,25 @@ import { parseArgs } from 'node:util'
                         })
                     })
                 },
+                row_delete: async (table, cols) => {
+                    assert_database_exists()
+                    let sql = `DELETE FROM ${table}`
+                    let values = undefined
+                    if(cols != undefined){
+                        sql += ` WHERE ${bindings_to_selector(cols)}`
+                        values = bindings_to_values(cols)
+                    }
+
+                    await new Promise((resolve, reject) => {
+                        database.run(sql, values, (err) => {
+                            if(err != null){
+                                reject(err)
+                                return
+                            }
+                            resolve()
+                        })
+                    })
+                }
             },
             'console': console
         }
