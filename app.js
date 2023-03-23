@@ -20,6 +20,10 @@ try {
                 file: {
                     type: 'string',
                     multiple: true,
+                },
+                arg: {
+                    type: 'string',
+                    multiple: true
                 }
             }
         })
@@ -58,6 +62,17 @@ try {
         const bindings =
         {
             core: {
+                args: (() => {
+                    if(args.values.arg == undefined){
+                        return {}
+                    }
+                    const result = {}
+                    args.values.arg.forEach(arg => {
+                        const parts = arg.split('=')
+                        result[parts[0]] = parts.slice(1).join('')
+                    })
+                    return result
+                })(),
                 http: {
                     default_opts: {},
                     request: async (options) => {
