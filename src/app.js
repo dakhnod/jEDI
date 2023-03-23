@@ -17,21 +17,20 @@ try {
                     type: 'string',
                     default: `${os.homedir()}/.jedi/default.sqlite`
                 },
-                file: {
-                    type: 'string',
-                    multiple: true,
-                },
                 arg: {
-                    type: 'string',
-                    multiple: true
+                    type: 'string'
+                },
+                env: {
+                    type: 'string'
                 }
-            }
+            },
+            allowPositionals: true
         })
 
-        if (args.values.file == undefined) {
+        if (args.positionals == undefined) {
             throw "missing --file parameter"
         }
-        const files = args.values.file
+        const files = args.positionals
 
         let database = undefined
 
@@ -62,6 +61,14 @@ try {
         const bindings =
         {
             core: {
+                env: (() => {
+                    if(args.values.env == undefined){
+                        return {}
+                    }
+                    const file = fs.readFileSync(args.values.env, 'utf8')
+                    const expression = jsonata(file)
+                    return expression.evaluate()
+                })(),
                 args: (() => {
                     if(args.values.arg == undefined){
                         return {}
@@ -101,7 +108,7 @@ try {
 
                             return response
                         } catch (e) {
-                            console.error(e)
+                            throw e
                         }
                     }
                 },
