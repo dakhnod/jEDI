@@ -7,7 +7,24 @@
             "request": "launch",
             "program": "${workspaceFolder}/app.js",
             "args": [
-                "--files", "test.jsonata"
+                "--file", "test.jsonata",
+            ]
+        },
+        {
+            "name": "YEDI BK",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.js",
+            "args": [
+                "--file", "bk.jsonata",
+            ]
+        },
+        {
+            "name": "YEDI no args",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.js",
+            "args": [
             ]
         }
     ]
