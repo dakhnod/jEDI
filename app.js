@@ -116,6 +116,7 @@ import { parseArgs } from 'node:util'
                     })
                     return result != undefined
                 },
+                row_absent: async (...args) => !await bindings.core.db.row_exists(...args),
                 row_create: async (table, cols) => {
                     assert_database_exists()
                     const sql = `INSERT INTO ${table}(${Object.keys(cols)}) VALUES (${bindings_to_insert_values(cols)})`
