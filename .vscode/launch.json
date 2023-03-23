@@ -5,7 +5,7 @@
             "name": "YEDI",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}/jedi.js",
+            "program": "${workspaceFolder}/src/app.js",
             "args": [
                 "--file", "test.jsonata",
             ]
@@ -14,7 +14,7 @@
             "name": "YEDI BK",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}/jedi.js",
+            "program": "${workspaceFolder}/src/app.js",
             "args": [
                 "--file", "bk.jsonata",
                 "--arg", "key=value",
@@ -25,7 +25,7 @@
             "name": "YEDI no args",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}/jedi.js",
+            "program": "${workspaceFolder}/src/app.js",
             "args": [
             ]
         }
